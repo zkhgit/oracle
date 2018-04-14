@@ -11,7 +11,8 @@ CREATE TEMPORARY TABLESPACE --表示创建的是临时表空间
 	MAXSIZE 500M --文件大小上限
 	EXTENT MANAGEMENT LOCAL; --分区分配方案
 ```
-### 1.2、创建（正式）表空间
+>注释：创建用户之前要先创建`临时表空间`，若不创建则默认的临时表空间为`TEMP`。
+### 1.2、创建（数据）表空间
 ```sql
 CREATE TABLESPACE --表示创建正式表空间
 	SYNCHROMOBILE 
@@ -22,6 +23,7 @@ CREATE TABLESPACE --表示创建正式表空间
 	MAXSIZE 500M 
 	EXTENT MANAGEMENT LOCAL;
 ```
+>注释：创建用户之前要先创建`数据表空间`，若不创建则默认的数据表空间是`system`。
 ### 1.3、创建用户并指定表空间
 ```sql
 CREATE USER synchromobile --用户名
