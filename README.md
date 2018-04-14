@@ -11,7 +11,7 @@ CREATE TEMPORARY TABLESPACE --表示创建的是临时表空间
 	MAXSIZE 500M --文件大小上限
 	EXTENT MANAGEMENT LOCAL; --分区分配方案
 ```
-### 1.2、创建（数据）表空间
+### 1.2、创建（正式）表空间
 ```sql
 CREATE TABLESPACE --表示创建正式表空间
 	SYNCHROMOBILE 
