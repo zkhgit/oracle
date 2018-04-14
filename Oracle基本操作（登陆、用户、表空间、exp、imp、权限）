@@ -79,7 +79,7 @@ b.将用户 system 与 sys 用户的表导出到指定路径 D 盘
 exp system/password@ORCL file=d:\testdata.dmp owner=(system,sys)
 
 c.将用户中的表 table_A、table_B 导出到指定路径 D 盘
-exp username/password@ORCL file= d:\testdata.dmp tables=(table_A,table_B)
+exp username/password@ORCL file=d:\testdata.dmp tables=(table_A,table_B)
 
 d.将用户中的表 table1 中的字段 filed1 以"00"打头的数据导出
 exp username/passwor@ORCL filed=d:\testdata.dmp tables=(table1) query=/" where filed1 like '00%'/"
