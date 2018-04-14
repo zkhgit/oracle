@@ -90,7 +90,7 @@ exp username/password@ORCL file= D:/testdata.dmp tables=(table_A,table_B)
 ```sql
 exp username/passwor@ORCL filed=D:/testdata.dmp tables=(table1) query=/" where filed1 like '00%'/"
 ```
->注释：对于压缩可以用`winzip`进行压缩，也可以在上面命令后面加上、compress=y、来实现。
+>注释：对于压缩可以用`winzip`进行压缩，也可以在上面命令后面加上`compress=y`来实现。
 ### 5.2、imp命令 (windows上在CMD下执行)
 #### a.将 D:/testdata.dmp 中的数据导入数据库中
 ```sql
