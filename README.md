@@ -100,12 +100,12 @@ imp username/password@ORCL full=y file=d:\testdata.dmp
 ```sql
 imp username/password@ORCL file=d:\testdata.dmp tables=(table1)
 ```
-#### c.将其他用户的对象导入当前用户
+#### c.将其他用户的数据导入当前用户
 ```sql
 imp username/password file=d:\testdata.dmp fromuser=user1
 imp username/password file=d:\testdata.dmp fromuser=(user1,user2)
 ```
-#### d.将其他用户的对象导入到指定用户
+#### d.将其他用户的数据导入到指定用户
 ```sql
 imp tomcepsp/tomcepsp@ORCL file=d:\Data\jxjy20180522.dmp fromuser=jxjy touser=tomcepsp
 imp tomcepsp/tomcepsp file=d:\Data\jxjy20180522.dmp fromuser=(user1,user2) touser=(user3,user4)
