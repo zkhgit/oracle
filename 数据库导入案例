@@ -1,0 +1,50 @@
+#1、创建临时表空间
+```sql
+CREATE TEMPORARY TABLESPACE --表示创建的是临时表空间
+	TOMCEPSP_TEMP --表空间名称
+	TEMPFILE 'D:\Data\TOMCEPSP_TEMP.DBF' --表空间文件（以下简称“文件”）存放位置
+	SIZE 100M --文件的初始大小
+	AUTOEXTEND ON --文件大小是否自动扩展（NO:是）
+	NEXT 50M --文件每次扩展大小
+	MAXSIZE 500M --文件大小上限
+	EXTENT MANAGEMENT LOCAL;
+```sql
+#2、创建表空间
+```sql
+CREATE TABLESPACE --表示创建正式表空间
+	TOMCEPSP 
+	DATAFILE 'D:\Data\TOMCEPSP.DBF' 
+	SIZE 100M 
+	AUTOEXTEND ON 
+	NEXT 50M 
+	MAXSIZE 500M 
+	EXTENT MANAGEMENT LOCAL;
+```sql
+#3、创建用户
+```sql
+CREATE USER tomcepsp --用户名
+	IDENTIFIED BY tomcepsp --密码
+	ACCOUNT UNLOCK --解锁用户
+	DEFAULT TABLESPACE TOMCEPSP --指定默认表空间
+	TEMPORARY TABLESPACE TOMCEPSP_TEMP;
+```sql
+#4、用户授权
+```sql
+GRANT CONNECT,RESOURCE,DBA TO tomcepsp;
+```sql
+#5.1、将其他用户的数据导入到当前用户
+```sql
+imp username/password file=d:\testdata.dmp fromuser=jxjy
+```sql
+#5.2、将其他用户的对象导入到指定用户
+```sql
+imp tomcepsp/tomcepsp@QYXXH file=d:\Data\jxjy20180522.dmp fromuser=jxjy touser=tomcepsp
+```sql
+#6、删除用户
+```sql
+DROP USER tomcepsp CASCADE;
+```sql
+#7、删除表空间
+```sql
+DROP TABLESPACE TOMCEPSP INCLUDING CONTENTS AND DATAFILES CASCADE CONSTRAINT;
+```sql
