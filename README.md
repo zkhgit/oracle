@@ -113,7 +113,9 @@ imp tomcepsp/tomcepsp file=d:\Data\jxjy20180522.dmp fromuser=(user1,user2) touse
 imp system/system@//111.111.111.111:1521/testSid file=d:\20180530.dmp fromuser=test1 touser=test2
 ```
 >注释：以上命令如果出现问题，假设有的表已存在，对该表可以不进行导入，后面添加`ignore=y`。
-## 强制删除正在连接的Oracle用户
+## 6.cmd下执行sql文件
+sqlplus system/system@//111.111.111.111:1521/testSid @D:\sql\test.sql
+## 7.强制删除正在连接的Oracle用户
 ```sql
 a.查看所有用户的会话信息
 select sid，serial#,username from v$session;
