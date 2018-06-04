@@ -20,7 +20,7 @@ CREATE TEMPORARY TABLESPACE --表示创建的是临时表空间
 	MAXSIZE 500M --文件大小上限
 	EXTENT MANAGEMENT LOCAL; --分区分配方案
 ```
->注释：创建用户之前要先创建`临时表空间`，若不创建则默认的临时表空间为`TEMP`。
+>注释：创建用户之前要先创建`临时表空间`，若不创建则默认的临时表空间为`TEMP`，Oracle下路径格式--\home\app\oracle\oradata\ORCL\CEPSP.DBF。
 ### 2.2. 创建（数据）表空间
 ```sql
 CREATE TABLESPACE --表示创建正式表空间
@@ -109,6 +109,7 @@ imp username/password file=d:\testdata.dmp fromuser=(user1,user2)
 ```sql
 imp tomcepsp/tomcepsp@ORCL file=d:\Data\jxjy20180522.dmp fromuser=jxjy touser=tomcepsp
 imp tomcepsp/tomcepsp file=d:\Data\jxjy20180522.dmp fromuser=(user1,user2) touser=(user3,user4)
+imp system/system@//111.111.111.111:1521/testSid file=d:\20180530.dmp fromuser=test1 touser=test2
 ```
 >注释：以上命令如果出现问题，假设有的表已存在，对该表可以不进行导入，后面添加`ignore=y`。
 ## 6. 权限分类
