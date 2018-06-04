@@ -3,6 +3,7 @@
 ### 1.1. 登陆sys帐户
 ```sql
 SQLPLUS sys AS SYSDBA
+SQLPLUS system/system@//111.111.111.111:1521/test
 ```
 ### 1.2. 登陆普通用户
 ```sql
