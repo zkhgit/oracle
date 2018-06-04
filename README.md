@@ -113,7 +113,18 @@ imp tomcepsp/tomcepsp file=d:\Data\jxjy20180522.dmp fromuser=(user1,user2) touse
 imp system/system@//111.111.111.111:1521/testSid file=d:\20180530.dmp fromuser=test1 touser=test2
 ```
 >注释：以上命令如果出现问题，假设有的表已存在，对该表可以不进行导入，后面添加`ignore=y`。
-## 6. 权限分类
+## 强制删除正在连接的Oracle用户
+```sql
+a.查看所有用户的会话信息
+select sid，serial#,username from v$session;
+b.查看某一个指定用户的会话信息
+ select  sid,serial# from v$session where username='TEST';
+C. 执行Kill命令
+ alter system kill session '73, 1288';
+d.删除用户
+drop user TEST cascade;
+```
+## 权限分类
 	DBA：拥有全部特权，是系统最高权限，只有 DBA 才可以创建数据库结构；
 	CONNECT：拥有 CONNECT 权限的用户只可以登录 Oracle ，不可以创建实体，不可以创建数据库结构；
 	RESOURCE：拥有RESOURCE权限的用户只可以创建实体，不可以创建数据库结构；
