@@ -3,11 +3,11 @@
 ### 1.1. 登陆sys帐户
 ```sql
 SQLPLUS sys AS SYSDBA
-SQLPLUS system/system@//111.111.111.111:1521/test
 ```
 ### 1.2. 登陆普通用户
 ```sql
 SQLPLUS 用户名/密码
+SQLPLUS 用户名/密码@//111.111.111.111:1521/test
 ```
 ## 2. 创建用户一般分为四步
 ### 2.1. 创建临时表空间
@@ -96,10 +96,12 @@ exp username/passwor@ORCL filed=d:\testdata.dmp tables=(table1) query=/" where f
 #### a. 将 d:/testdata.dmp 中的数据导入数据库中
 ```sql
 imp username/password@ORCL full=y file=d:\testdata.dmp
+imp system/system@//111.111.111.111:1521/ORCL full=y file=d:\testdata.dmp
 ```
 #### b. 将 d:\testdata.dmp 中的表table1 导入
 ```sql
 imp username/password@ORCL file=d:\testdata.dmp tables=(table1)
+imp system/system@//111.111.111.111:1521/ORCL file=d:\testdata.dmp tables=(table1)
 ```
 #### c. 将其他用户的数据导入当前用户
 ```sql
@@ -114,7 +116,12 @@ imp system/system@//111.111.111.111:1521/testSid file=d:\20180530.dmp fromuser=t
 ```
 >注释：以上命令如果出现问题，假设有的表已存在，对该表可以不进行导入，后面添加`ignore=y`。
 ## 6.cmd下执行sql文件
+```sql
+a.未登陆
 sqlplus system/system@//111.111.111.111:1521/testSid @D:\sql\test.sql
+b.已登陆
+@D:\sql\test.sql
+```
 ## 7.强制删除正在连接的Oracle用户
 ```sql
 a.查看所有用户的会话信息
