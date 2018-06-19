@@ -7,7 +7,7 @@ SQLPLUS sys AS SYSDBA
 ### 1.2. 登陆普通用户
 ```sql
 SQLPLUS 用户名/密码
-SQLPLUS 用户名/密码@//111.111.111.111:1521/test
+SQLPLUS 用户名/密码@111.111.111.111:1521/test
 ```
 ## 2. 创建用户一般分为四步
 ### 2.1. 创建临时表空间
@@ -78,7 +78,7 @@ DROP TABLESPACE SYNCHROMOBILE INCLUDING CONTENTS AND DATAFILES CASCADE CONSTRAIN
 #### a. 将用户表导出到指定路径 D 盘
 ```sql
 exp 用户名/密码@ORCL file=d:\testdata.dmp full=y
-exp 用户名/密码@//111.111.111.111:1521/ORCL file=d:\testdata.dmp full=y
+exp 用户名/密码@111.111.111.111:1521/ORCL file=d:\testdata.dmp full=y
 ```
 #### b. 将用户`system`与`sys`用户的表导出到指定路径 D 盘
 ```sql
@@ -97,12 +97,12 @@ exp 用户名/密码@ORCL filed=d:\testdata.dmp tables=(table1) query=/" where f
 #### a. 将 d:/testdata.dmp 中的数据导入数据库中
 ```sql
 imp 用户名/密码@ORCL full=y file=d:\testdata.dmp
-imp system/system@//111.111.111.111:1521/ORCL full=y file=d:\testdata.dmp
+imp system/system@111.111.111.111:1521/ORCL full=y file=d:\testdata.dmp
 ```
 #### b. 将 d:\testdata.dmp 中的表table1 导入
 ```sql
 imp 用户名/密码@ORCL file=d:\testdata.dmp tables=(table1)
-imp system/system@//111.111.111.111:1521/ORCL file=d:\testdata.dmp tables=(table1)
+imp system/system@111.111.111.111:1521/ORCL file=d:\testdata.dmp tables=(table1)
 ```
 #### c. 将其他用户的数据导入当前用户
 ```sql
@@ -113,13 +113,13 @@ imp username/password file=d:\testdata.dmp fromuser=(user1,user2)
 ```sql
 imp tomcepsp/tomcepsp@ORCL file=d:\Data\jxjy20180522.dmp fromuser=jxjy touser=tomcepsp
 imp tomcepsp/tomcepsp file=d:\Data\jxjy20180522.dmp fromuser=(user1,user2) touser=(user3,user4)
-imp system/system@//111.111.111.111:1521/testSid file=d:\20180530.dmp fromuser=test1 touser=test2
+imp system/system@111.111.111.111:1521/testSid file=d:\20180530.dmp fromuser=test1 touser=test2
 ```
 >注释：以上命令如果出现问题，假设有的表已存在，对该表可以不进行导入，后面添加`ignore=y`。
 ## 6.cmd下执行sql文件
 ### a.未登陆
 ```sql
-sqlplus system/system@//111.111.111.111:1521/testSid @D:\sql\test.sql
+sqlplus system/system@111.111.111.111:1521/testSid @D:\sql\test.sql
 ```
 ### b.已登陆
 ```sql
